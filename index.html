@@ -3,9 +3,25 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Starter Code</title>
+        <title>Stock Prices and Top Currencies</title>
     </head>
     <body>
-        <h1>Let's do this!</h1>
+        <header>
+            <h1>Let's do this!</h1>
+        </header>
+
+        <!-- Container (JM)-->
+        <div class="conatiner">
+            <form id="stock-form">
+                <label for="stockname">Stock name:</label>
+                <input name="stock" id="stockname" type="text" autofocus="true" autocomplete="off" />
+                <label for="stockdate">Date:</label>
+                <input type="date" id="stkdate" name="stkdate">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+        <!-- Script file (JM) -->
+        <script src="./assets/js/script.js"></script>
     </body>
 </html>
