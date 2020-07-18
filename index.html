@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Starter Code</title>
+        <title>Stock Prices and Top Currencies</title>
     </head>
     <body>
-        <h1>Let's do this!</h1>
+        <header>
+            <h1>Let's do this!</h1>
+        </header>
+
+        <!-- Container (JM)-->
+        <div class="conatiner">
+            <form id="stock-form" class="pure-form pure-form-stacked">
+                <fieldset>
+                    <legend></legend>
+                    <label for="stacked-stockname">Stock name:</label>
+                    <input name="stock" id="stacked-stockname" placeholder="Enter the Stock Name" type="text" autofocus="true" autocomplete="off" />
+                    <span class="pure-form-message">This is a required field.</span>
+                    <label for="stacked-stockdate">Date:</label>
+                    <input type="date" id="stack-stockdate" name="stkdate">
+                    <button type="submit" value="Submit" class="pure-button pure-button-primary">Submit</button>
+                </fieldset>
+            </form>
+        
+            <!-- Stock prices -->
+            <div class="stock-prices"></div>
+        
+        </div>
+        
+
+        <!-- Script file (JM) -->
+        <script src="./assets/js/script.js"></script>
     </body>
 </html>
