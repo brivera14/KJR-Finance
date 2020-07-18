@@ -5,6 +5,7 @@ let stockInputEl = document.querySelector("#stockname");
 let stockDateEl = document.querySelector("#stkdate");
 let stockFormEl = document.querySelector("#stock-form");
 
+
    
    // Get stock price api (JM)
    let getStockUrl = function(stock, stkdate) {
@@ -13,7 +14,27 @@ let stockFormEl = document.querySelector("#stock-form");
     fetch(apiUrl).then(function(response) { 
         if (response.ok) {
             response.json().then(function(data) {    
-                console.log(data);
+            
+            displayStock = data["Meta Data"]["2. Symbol"];
+            let upperStock = displayStock.toUpperCase();
+
+            let stockNameEl = document.querySelector('.stock-prices');
+            let stknme = document.createElement('p');
+            stockNameEl.appendChild(stknme);
+            stknme.innerHTML = "Stock: " + upperStock;
+            console.log(stkdate);
+            
+            // cannot grab stock prices (JM) ??????
+            console.log(data["Time Series (Daily)"].stkdate[0]);
+            console.log(data["Time Series (Daily)"].stkdate["1. open"]);
+
+            //displayOpen = data["Time Series (Daily)"][0]["1. open"];
+
+            //let stockOpenEl = document.querySelector('.stock-prices');
+            //let stkopen = document.createElement('p');
+            //stockOpenEl.appendChild(stkopen);
+            //stkopen.innerHTML = "Open: " + displayOpen;
+
             });
         } else {
             alert("Error: " + response.statusText);
