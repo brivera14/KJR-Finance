@@ -30,7 +30,8 @@ let stockFormEl = document.querySelector("#stock-form");
 
             displayOpen = data["Time Series (Daily)"][stkdate]["1. open"];
             displayHigh = data["Time Series (Daily)"][stkdate]["2. high"];
-            displayLow = data["Time Series (Daily)"][stkdate]["1. low"];
+            // displayLow was givin value "UNDEFINED" because of a typo (BR)
+            displayLow = data["Time Series (Daily)"][stkdate]["3. low"];
             displayClose = data["Time Series (Daily)"][stkdate]["4. close"];
             displayVolume = data["Time Series (Daily)"][stkdate]["5. volume"];
             
