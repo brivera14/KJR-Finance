@@ -79,7 +79,7 @@ let mxnEl = document.querySelector("#mxn");
         alert("unable to connect");
     });
     
-    // fetch currency api to convert stock prices to different currencies
+    // fetch currency api to convert stock prices to different currencies (BR)
     let currencyApi = "http://api.currencylayer.com/live?access_key=18d5fcb4ab951492d7da46175fb934c4&currencies=USD,AUD,CAD,PLN,MXN&format=1%22";
     fetch(currencyApi).then(function(response2){
         if (response2.ok) {
@@ -97,8 +97,9 @@ let mxnEl = document.querySelector("#mxn");
     });
 };
 
-// fetch currency api to convert stock prices to different currencies
-// let getCurrency = function (response) {
+let test = function (response){
+    
+}
     
 // };
 
@@ -113,7 +114,7 @@ let formSubmitHandler = function(event) {
         getStockUrl(stock, stkdate);
         stockInputEl.value = "";
     } else {
-        alert("Please enter a City");
+        alert("Please enter a valid stock code");
     }
 };
 
