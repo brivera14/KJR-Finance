@@ -44,25 +44,29 @@ let mxnEl = document.querySelector("#mxn");
             let stockOpenEl = document.querySelector('.stock-prices');
             let stkopen = document.createElement('p');
             stockOpenEl.appendChild(stkopen);
-            stkopen.innerHTML = "Open: " + displayOpen;
+            // applied method math.round with toFixed to reduce decimals in the value (BR)
+            stkopen.innerHTML = "Open: " + (Math.round(displayOpen)).toFixed(2);
 
             // Show stock high
             let stockHighEl = document.querySelector('.stock-prices');
             let stkhigh = document.createElement('p');
             stockHighEl.appendChild(stkhigh);
-            stkhigh.innerHTML = "High: " + displayHigh;
+            // applied method math.round with toFixed to reduce decimals in the value (BR)
+            stkhigh.innerHTML = "High: " + (Math.round(displayHigh)).toFixed(2);
 
             // Show stock low
             let stockLowEl = document.querySelector('.stock-prices');
             let stklow = document.createElement('p');
             stockLowEl.appendChild(stklow);
-            stklow.innerHTML = "Low: " + displayLow;
+            // applied method math.round with toFixed to reduce decimals in the value (BR)
+            stklow.innerHTML = "Low: " + (Math.round(displayLow)).toFixed(2);
 
             // Show closing stock price
             let stockCloseEl = document.querySelector('.stock-prices');
             let stkclose = document.createElement('p');
             stockCloseEl.appendChild(stkclose);
-            stkclose.innerHTML = "Close: " + displayClose;
+            // applied method math.round with toFixed to reduce decimals in the value (BR)
+            stkclose.innerHTML = "Close: " + (Math.round(displayClose)).toFixed(2);
 
             // Show stock closing price
             let stockVolumeEl = document.querySelector('.stock-prices');
@@ -78,11 +82,12 @@ let mxnEl = document.querySelector("#mxn");
                         console.log(data2);
 
                         // get currencies values
-                        usdEl.textContent = "American Dollar: " + displayClose * data2["quotes"]["USDUSD"];
-                        audEl.textContent = "Australian Dollar: " + displayClose * data2["quotes"]["USDAUD"];
-                        cadEl.textContent = "Canadian Dollar: " + displayClose * data2["quotes"]["USDCAD"];
-                        plnEl.textContent = "Polish Zloty: " + displayClose * data2["quotes"]["USDPLN"];
-                        mxnEl.textContent = "Mexican Peso: " + displayClose * data2["quotes"]["USDMXN"];
+                        // applied method math.round with toFixed to reduce decimals in the value (BR)
+                        usdEl.textContent = "American Dollar: " + (Math.round(displayClose * data2["quotes"]["USDUSD"])).toFixed(2);
+                        audEl.textContent = "Australian Dollar: " + (Math.round(displayClose * data2["quotes"]["USDAUD"])).toFixed(2);
+                        cadEl.textContent = "Canadian Dollar: " + (Math.round(displayClose * data2["quotes"]["USDCAD"])).toFixed(2);
+                        plnEl.textContent = "Polish Zloty: " + (Math.round(displayClose * data2["quotes"]["USDPLN"])).toFixed(2);
+                        mxnEl.textContent = "Mexican Peso: " + (Math.round(displayClose * data2["quotes"]["USDMXN"])).toFixed(2);
                     });
                 }
             });
