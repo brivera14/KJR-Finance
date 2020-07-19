@@ -97,12 +97,6 @@ let mxnEl = document.querySelector("#mxn");
     });
 };
 
-let test = function (response){
-    
-}
-    
-// };
-
 // Get stock name from input (JM)
 let formSubmitHandler = function(event) {
     event.preventDefault();
