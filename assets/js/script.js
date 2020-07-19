@@ -7,10 +7,11 @@ let stockFormEl = document.querySelector("#stock-form");
 
 // variables for currencies (BR)
 let usdEl = document.querySelector("#usd");
-let audEl = document.querySelector("#aud");
+let eurEl = document.querySelector("#eur");
+let jpyEl = document.querySelector("#jpy");
+let gbpEl = document.querySelector("#gbp");
 let cadEl = document.querySelector("#cad");
-let plnEl = document.querySelector("#pln");
-let mxnEl = document.querySelector("#mxn");
+let chfEl = document.querySelector("#chf");
    
    // Get stock price api (JM)
    let getStockUrl = function(stock, stkdate) {
@@ -20,10 +21,13 @@ let mxnEl = document.querySelector("#mxn");
         if (response.ok) {
             response.json().then(function(data) {    
             console.log(data);
+            
             displayStock = data["Meta Data"]["2. Symbol"];
+            displayStock.textContent = ""; // Created to remove last stock name (BR)
             let upperStock = displayStock.toUpperCase();
 
             let stockNameEl = document.querySelector('.stock-prices');
+            stockNameEl.textContent = ""; // Created to remove last stock Prices (BR)
             let stknme = document.createElement('p');
             stockNameEl.appendChild(stknme);
             stknme.innerHTML = "Stock: " + upperStock;
@@ -75,7 +79,7 @@ let mxnEl = document.querySelector("#mxn");
             stkvolume.innerHTML = "Volume: " + displayVolume;
 
             // fetch currency api to convert stock prices to different currencies (BR)
-            let currencyApi = "http://api.currencylayer.com/live?access_key=18d5fcb4ab951492d7da46175fb934c4&currencies=USD,AUD,CAD,PLN,MXN&format=1%22";
+            let currencyApi = "http://api.currencylayer.com/live?access_key=18d5fcb4ab951492d7da46175fb934c4&currencies=USD,EUR,JPY,GBP,CAD,CHF&format=1%22";
             fetch(currencyApi).then(function(response2){
                 if (response2.ok) {
                     response2.json().then(function(data2) {
@@ -84,10 +88,11 @@ let mxnEl = document.querySelector("#mxn");
                         // get currencies values
                         // applied method math.round with toFixed to reduce decimals in the value (BR)
                         usdEl.textContent = "American Dollar: " + (Math.round(displayClose * data2["quotes"]["USDUSD"])).toFixed(2);
-                        audEl.textContent = "Australian Dollar: " + (Math.round(displayClose * data2["quotes"]["USDAUD"])).toFixed(2);
+                        eurEl.textContent = "Euro: " + (Math.round(displayClose * data2["quotes"]["USDEUR"])).toFixed(2);
+                        jpyEl.textContent = "Yen: " + (Math.round(displayClose * data2["quotes"]["USDJPY"])).toFixed(2);
+                        gbpEl.textContent = "Great British Pound: " + (Math.round(displayClose * data2["quotes"]["USDGBP"])).toFixed(2);
                         cadEl.textContent = "Canadian Dollar: " + (Math.round(displayClose * data2["quotes"]["USDCAD"])).toFixed(2);
-                        plnEl.textContent = "Polish Zloty: " + (Math.round(displayClose * data2["quotes"]["USDPLN"])).toFixed(2);
-                        mxnEl.textContent = "Mexican Peso: " + (Math.round(displayClose * data2["quotes"]["USDMXN"])).toFixed(2);
+                        chfEl.textContent = "Swiss Franc: " + (Math.round(displayClose * data2["quotes"]["USDCHF"])).toFixed(2);
                     });
                 }
             });
