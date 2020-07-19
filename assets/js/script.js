@@ -70,6 +70,23 @@ let mxnEl = document.querySelector("#mxn");
             stockVolumeEl.appendChild(stkvolume);
             stkvolume.innerHTML = "Volume: " + displayVolume;
 
+            // fetch currency api to convert stock prices to different currencies (BR)
+            let currencyApi = "http://api.currencylayer.com/live?access_key=18d5fcb4ab951492d7da46175fb934c4&currencies=USD,AUD,CAD,PLN,MXN&format=1%22";
+            fetch(currencyApi).then(function(response2){
+                if (response2.ok) {
+                    response2.json().then(function(data2) {
+                        console.log(data2);
+
+                        // get currencies values
+                        usdEl.textContent = "American Dollar: " + displayClose * data2["quotes"]["USDUSD"];
+                        audEl.textContent = "Australian Dollar: " + displayClose * data2["quotes"]["USDAUD"];
+                        cadEl.textContent = "Canadian Dollar: " + displayClose * data2["quotes"]["USDCAD"];
+                        plnEl.textContent = "Polish Zloty: " + displayClose * data2["quotes"]["USDPLN"];
+                        mxnEl.textContent = "Mexican Peso: " + displayClose * data2["quotes"]["USDMXN"];
+                    });
+                }
+            });
+
             });
         } else {
             alert("Error: " + response.statusText);
@@ -79,22 +96,7 @@ let mxnEl = document.querySelector("#mxn");
         alert("unable to connect");
     });
     
-    // fetch currency api to convert stock prices to different currencies (BR)
-    let currencyApi = "http://api.currencylayer.com/live?access_key=18d5fcb4ab951492d7da46175fb934c4&currencies=USD,AUD,CAD,PLN,MXN&format=1%22";
-    fetch(currencyApi).then(function(response2){
-        if (response2.ok) {
-            response2.json().then(function(data2) {
-                console.log(data2);
-
-                // get currencies values
-                usdEl.textContent = data2["quotes"]["USDUSD"];
-                audEl.textContent = data2["quotes"]["USDAUD"];
-                cadEl.textContent = data2["quotes"]["USDCAD"];
-                plnEl.textContent = data2["quotes"]["USDPLN"];
-                mxnEl.textContent = data2["quotes"]["USDMXN"];
-            });
-        }
-    });
+    
 };
 
 // Get stock name from input (JM)
