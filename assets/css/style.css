@@ -1,10 +1,13 @@
 * {
-    box-sizing: border-box;
+   box-sizing: border-box;
 }
 
 :root {
     --primary: #3ea060;
     --secondary: #fff;
+    --history: rgb(236, 232, 232);
+    --border: rgb(173, 169, 169);
+
 }
 
 body {
@@ -12,7 +15,63 @@ body {
 }
 
 header {
+    margin: 0;
+    padding: 0;
     text-align: center;
     color: var(--secondary);
     background-color: var(--primary);
 }
+
+#stock-form {
+    display: inline;
+}
+
+/* Search history of stocks */
+.stock-history {
+    margin: 20px 0;
+    display: block;
+    text-align: left;
+    font-size: 1.0rem;
+    width: 175px;
+    background-color:var(--history);
+    text-transform: uppercase;
+}
+
+.stock-history p {
+    /*display: block; */
+    margin:0;
+    padding:2px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.0rem;
+    width: 100%;
+    text-transform: none;
+    background-color:var(--history);
+}
+
+.btn-hist {
+    margin: 0;
+    font-size: 1.0rem;
+    text-decoration: none;
+    text-align: left;
+    text-transform: uppercase;
+    border: 1px solid var(--history);
+    background-color: var(--history);
+    width: 100%;
+    transform: translate(-1px, -1px);
+  }
+
+  .btn-hist:hover {
+    margin: 0;
+    font-size: 1.0rem;
+    text-decoration: none;
+    text-align: left;
+    text-transform: uppercase;
+    background-color:rgb(110, 109, 109);
+    width: 100%;
+    transform: translate(-1px, -1px);
+  }
+
+  .stock-prices {
+      display: inline;
+  }

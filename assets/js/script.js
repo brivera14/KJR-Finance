@@ -4,6 +4,11 @@ let apiKey = "&apikey=MYP2P4U87W95DBG6";
 let stockInputEl = document.querySelector("#stockname");
 let stockDateEl = document.querySelector("#stkdate");
 let stockFormEl = document.querySelector("#stock-form");
+let searchBtnEl = document.querySelector(".stock-history");
+
+let stkHistoryArr = [];
+let update = 0;
+
 
 // variables for currencies (BR)
 let usdEl = document.querySelector("#usd");
@@ -14,19 +19,24 @@ let mxnEl = document.querySelector("#mxn");
    
    // Get stock price api (JM)
    let getStockUrl = function(stock, stkdate) {
-       console.log("api: ", stock, stkdate);
+    console.log("api: ", stock, stkdate);
     let apiUrl = apiStockUrl + stock + apiKey;
     fetch(apiUrl).then(function(response) { 
         if (response.ok) {
             response.json().then(function(data) {    
             console.log(data);
+            saveSearchHistory(stock, stkdate);
+            update = 1;
+            getSearchHistory(update);
+            update = 0;
+
             displayStock = data["Meta Data"]["2. Symbol"];
             let upperStock = displayStock.toUpperCase();
 
             let stockNameEl = document.querySelector('.stock-prices');
             let stknme = document.createElement('p');
             stockNameEl.appendChild(stknme);
-            stknme.innerHTML = "Stock: " + upperStock;
+            stknme.innerHTML = "Stock: " + upperStock + " Price Date: " + stkdate;
            // console.log(stkdate);
             
             // Grab stock prices (
@@ -112,5 +122,94 @@ let formSubmitHandler = function(event) {
     }
 };
 
-// Call stock fetch (JM)
+/* Get stock name from search history */
+let formSubmitHistory = function(event) {
+    event.preventDefault();
+
+    let stock = event.target.innerHTML;
+    if (stock) {
+        for (var i = 0; i < stkHistoryArr.length; ++i) {
+            if (stock === stkHistoryArr[i]) {
+                console.log(i);
+                let stkdate = stkHistoryArr[++i]
+                console.log(stkHistoryArr[i]);
+                console.log(i);
+                console.log(stkdate);
+                stockInputEl.value = "";
+                getStockUrl(stock, stkdate);
+            }
+        }
+    } else {
+        alert("Please enter a Stock");
+    }
+};
+
+// Load search history
+let getSearchHistory = function(update) {
+    if ("StockSearch" in localStorage) {
+        let retrievedData = localStorage.getItem("StockSearch");
+        stkHistoryArr = JSON.parse(retrievedData);
+        if (update === 1) {
+            let parent = document.querySelector('.stock-history');
+            while (parent.firstChild) {
+                parent.removeChild(parent.firstChild);
+            }
+            let priceparent = document.querySelector('.stock-prices');
+            while (priceparent.firstChild) {
+                priceparent.removeChild(priceparent.firstChild);
+            }
+        }
+        let i =0;
+        while (i < stkHistoryArr.length) {
+            let loadstock = stkHistoryArr[i]
+            let loadstockEl = document.querySelector('.stock-history');
+            let stockInput = document.createElement('button');
+            stockInput.classList.add('btn-hist');
+            loadstockEl.appendChild(stockInput);
+            stockInput.innerHTML = loadstock;
+            i = i + 2;
+        }
+    } else {
+        return;
+    }
+};
+
+// Save search history
+let saveSearchHistory = function(stock, stkdate) {
+    if ("StockSearch" in localStorage) {
+        let retrievedData = localStorage.getItem("StockSearch");
+        stkHistoryArr = JSON.parse(retrievedData);
+
+        let i =0;
+        while (i < stkHistoryArr.length) {
+            let stockUP = stock.toUpperCase();
+            let arrUP = stkHistoryArr[i].toUpperCase();
+            if (stockUP === arrUP) {
+                return;
+            } else {
+                i++;
+            }
+        }
+           
+        if (stkHistoryArr.length <= 4) {
+            stkHistoryArr.unshift(stock, stkdate);
+            localStorage.setItem("StockSearch", JSON.stringify(stkHistoryArr));
+        } else {
+            stkHistoryArr.unshift(stock, stkdate);
+            stkHistoryArr.pop(stock, stkdate);
+            localStorage.setItem("StockSearch", JSON.stringify(stkHistoryArr));
+        }
+    } else {
+        stkHistoryArr.push(stock, stkdate);
+        localStorage.setItem("StockSearch", JSON.stringify(stkHistoryArr));
+    }
+};
+
+
+
+
+
+// Call history, stock fetch, stock history (JM)
+getSearchHistory();
 stockFormEl.addEventListener("submit", formSubmitHandler); 
+searchBtnEl.addEventListener("click", formSubmitHistory);
