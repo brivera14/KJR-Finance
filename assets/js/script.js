@@ -5,7 +5,12 @@ let stockInputEl = document.querySelector("#stockname");
 let stockDateEl = document.querySelector("#stkdate");
 let stockFormEl = document.querySelector("#stock-form");
 
-
+// variables for currencies (BR)
+let usdEl = document.querySelector("#usd");
+let audEl = document.querySelector("#aud");
+let cadEl = document.querySelector("#cad");
+let plnEl = document.querySelector("#pln");
+let mxnEl = document.querySelector("#mxn");
    
    // Get stock price api (JM)
    let getStockUrl = function(stock, stkdate) {
@@ -73,7 +78,29 @@ let stockFormEl = document.querySelector("#stock-form");
     .catch(function(error) {
         alert("unable to connect");
     });
+    
+    // fetch currency api to convert stock prices to different currencies
+    let currencyApi = "http://api.currencylayer.com/live?access_key=18d5fcb4ab951492d7da46175fb934c4&currencies=USD,AUD,CAD,PLN,MXN&format=1%22";
+    fetch(currencyApi).then(function(response2){
+        if (response2.ok) {
+            response2.json().then(function(data2) {
+                console.log(data2);
+
+                // get currencies values
+                usdEl.textContent = data2["quotes"]["USDUSD"];
+                audEl.textContent = data2["quotes"]["USDAUD"];
+                cadEl.textContent = data2["quotes"]["USDCAD"];
+                plnEl.textContent = data2["quotes"]["USDPLN"];
+                mxnEl.textContent = data2["quotes"]["USDMXN"];
+            });
+        }
+    });
 };
+
+// fetch currency api to convert stock prices to different currencies
+// let getCurrency = function (response) {
+    
+// };
 
 // Get stock name from input (JM)
 let formSubmitHandler = function(event) {
