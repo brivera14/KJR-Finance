@@ -6,6 +6,7 @@ let stockDateEl = document.querySelector("#stkdate");
 let stockFormEl = document.querySelector("#stock-form");
 
 // variables for currencies (BR)
+let currencyList = document.querySelector("#currencies-list");
 let currencyContEl = document.querySelector("#currency-container");
 let usdOpenEl = document.querySelector("#usd-open");
 let usdHighEl = document.querySelector("#usd-high");
@@ -31,9 +32,14 @@ let chfOpenEl = document.querySelector("#chf-open");
 let chfHighEl = document.querySelector("#chf-high");
 let chfLowEl = document.querySelector("#chf-low");
 let chfCloseEl = document.querySelector("#chf-close");
+let userChosen = document.querySelector("#user-chosen");
+let userOpenEl = document.querySelector("#user-open");
+let userHighEl = document.querySelector("#user-high");
+let userLowEl = document.querySelector("#user-low");
+let userCloseEl = document.querySelector("#user-close");
 
    // Get stock price api (JM)
-   let getStockUrl = function(stock, stkdate) {
+   let getStockUrl = function(stock, stkdate, currencyChosen) {
        console.log("api: ", stock, stkdate);
     let apiUrl = apiStockUrl + stock + apiKey;
     fetch(apiUrl).then(function(response) { 
@@ -97,54 +103,72 @@ let chfCloseEl = document.querySelector("#chf-close");
             stockVolumeEl.appendChild(stkvolume);
             stkvolume.innerHTML = "Volume: " + displayVolume;
 
-            // fetch currency api to convert stock prices to different currencies (BR)
-            let currencyApi = "http://api.currencylayer.com/live?access_key=18d5fcb4ab951492d7da46175fb934c4&currencies=USD,EUR,JPY,GBP,CAD,CHF&format=1%22";
-            fetch(currencyApi).then(function(response2){
-                if (response2.ok) {
-                    response2.json().then(function(data2) {
-                        console.log(data2);
+                // fetch currency api to convert stock prices to different currencies (BR)
+                let currencyApi = "http://api.currencylayer.com/live?access_key=18d5fcb4ab951492d7da46175fb934c4&currencies=USD,EUR,JPY,GBP,CAD,CHF&format=1%22";
+                fetch(currencyApi).then(function(response2){
+                    if (response2.ok) {
+                        response2.json().then(function(data2) {
+                            console.log(data2);
 
-                        // applied method math.round with toFixed to reduce decimals in the value (BR)
-                        
-                        // USD Currency information
-                        currencyContEl.style.display = "block";
-                        usdOpenEl.textContent = "Open: " + (Math.round(displayOpen * data2["quotes"]["USDUSD"])).toFixed(2);
-                        usdHighEl.textContent = "High: " + (Math.round(displayHigh * data2["quotes"]["USDUSD"])).toFixed(2);
-                        usdLowEl.textContent = "Low: " + (Math.round(displayLow * data2["quotes"]["USDUSD"])).toFixed(2);
-                        usdCloseEl.textContent = "Close: " + (Math.round(displayClose * data2["quotes"]["USDUSD"])).toFixed(2);
-                        
-                        // EUR Currency information
-                        eurOpenEl.textContent = "Open: " + (Math.round(displayOpen * data2["quotes"]["USDEUR"])).toFixed(2);
-                        eurHighEl.textContent = "High: " + (Math.round(displayHigh * data2["quotes"]["USDEUR"])).toFixed(2);
-                        eurLowEl.textContent = "Low: " + (Math.round(displayLow * data2["quotes"]["USDEUR"])).toFixed(2);
-                        eurCloseEl.textContent = "Close: " + (Math.round(displayClose * data2["quotes"]["USDEUR"])).toFixed(2);
-                        
-                        // JPY Currency information
-                        jpyOpenEl.textContent = "Open: " + (Math.round(displayOpen * data2["quotes"]["USDJPY"])).toFixed(2);
-                        jpyHighEl.textContent = "High: " + (Math.round(displayHigh * data2["quotes"]["USDJPY"])).toFixed(2);
-                        jpyLowEl.textContent = "Low: " + (Math.round(displayLow * data2["quotes"]["USDJPY"])).toFixed(2);
-                        jpyCloseEl.textContent = "Close: " + (Math.round(displayClose * data2["quotes"]["USDJPY"])).toFixed(2);
-                        
-                        // GBP Currency information
-                        gbpOpenEl.textContent = "Open: " + (Math.round(displayOpen * data2["quotes"]["USDGBP"])).toFixed(2);
-                        gbpHighEl.textContent = "High: " + (Math.round(displayHigh * data2["quotes"]["USDGBP"])).toFixed(2);
-                        gbpLowEl.textContent = "Low: " + (Math.round(displayLow * data2["quotes"]["USDGBP"])).toFixed(2);
-                        gbpCloseEl.textContent = "Close: " + (Math.round(displayClose * data2["quotes"]["USDGBP"])).toFixed(2);
-                        
-                        // CAD Currency information
-                        cadOpenEl.textContent = "Open: " + (Math.round(displayOpen * data2["quotes"]["USDCAD"])).toFixed(2);
-                        cadHighEl.textContent = "High: " + (Math.round(displayHigh * data2["quotes"]["USDCAD"])).toFixed(2);
-                        cadLowEl.textContent = "Low: " + (Math.round(displayLow * data2["quotes"]["USDCAD"])).toFixed(2);
-                        cadCloseEl.textContent = "Close: " + (Math.round(displayClose * data2["quotes"]["USDCAD"])).toFixed(2);
-                        
-                        // CHF Currency information
-                        chfOpenEl.textContent = "Open: " + (Math.round(displayOpen * data2["quotes"]["USDCHF"])).toFixed(2);
-                        chfHighEl.textContent = "High: " + (Math.round(displayHigh * data2["quotes"]["USDCHF"])).toFixed(2);
-                        chfLowEl.textContent = "Low: " + (Math.round(displayLow * data2["quotes"]["USDCHF"])).toFixed(2);
-                        chfCloseEl.textContent = "Close: " + (Math.round(displayClose * data2["quotes"]["USDCHF"])).toFixed(2);
-                    });
-                }
-            });
+                            // applied method math.round with toFixed to reduce decimals in the value (BR)
+                            
+                            // USD Currency information
+                            currencyContEl.style.display = "block";
+                            usdOpenEl.textContent = "Open: " + (Math.round(displayOpen * data2["quotes"]["USDUSD"])).toFixed(2);
+                            usdHighEl.textContent = "High: " + (Math.round(displayHigh * data2["quotes"]["USDUSD"])).toFixed(2);
+                            usdLowEl.textContent = "Low: " + (Math.round(displayLow * data2["quotes"]["USDUSD"])).toFixed(2);
+                            usdCloseEl.textContent = "Close: " + (Math.round(displayClose * data2["quotes"]["USDUSD"])).toFixed(2);
+                            
+                            // EUR Currency information
+                            eurOpenEl.textContent = "Open: " + (Math.round(displayOpen * data2["quotes"]["USDEUR"])).toFixed(2);
+                            eurHighEl.textContent = "High: " + (Math.round(displayHigh * data2["quotes"]["USDEUR"])).toFixed(2);
+                            eurLowEl.textContent = "Low: " + (Math.round(displayLow * data2["quotes"]["USDEUR"])).toFixed(2);
+                            eurCloseEl.textContent = "Close: " + (Math.round(displayClose * data2["quotes"]["USDEUR"])).toFixed(2);
+                            
+                            // JPY Currency information
+                            jpyOpenEl.textContent = "Open: " + (Math.round(displayOpen * data2["quotes"]["USDJPY"])).toFixed(2);
+                            jpyHighEl.textContent = "High: " + (Math.round(displayHigh * data2["quotes"]["USDJPY"])).toFixed(2);
+                            jpyLowEl.textContent = "Low: " + (Math.round(displayLow * data2["quotes"]["USDJPY"])).toFixed(2);
+                            jpyCloseEl.textContent = "Close: " + (Math.round(displayClose * data2["quotes"]["USDJPY"])).toFixed(2);
+                            
+                            // GBP Currency information
+                            gbpOpenEl.textContent = "Open: " + (Math.round(displayOpen * data2["quotes"]["USDGBP"])).toFixed(2);
+                            gbpHighEl.textContent = "High: " + (Math.round(displayHigh * data2["quotes"]["USDGBP"])).toFixed(2);
+                            gbpLowEl.textContent = "Low: " + (Math.round(displayLow * data2["quotes"]["USDGBP"])).toFixed(2);
+                            gbpCloseEl.textContent = "Close: " + (Math.round(displayClose * data2["quotes"]["USDGBP"])).toFixed(2);
+                            
+                            // CAD Currency information
+                            cadOpenEl.textContent = "Open: " + (Math.round(displayOpen * data2["quotes"]["USDCAD"])).toFixed(2);
+                            cadHighEl.textContent = "High: " + (Math.round(displayHigh * data2["quotes"]["USDCAD"])).toFixed(2);
+                            cadLowEl.textContent = "Low: " + (Math.round(displayLow * data2["quotes"]["USDCAD"])).toFixed(2);
+                            cadCloseEl.textContent = "Close: " + (Math.round(displayClose * data2["quotes"]["USDCAD"])).toFixed(2);
+                            
+                            // CHF Currency information
+                            chfOpenEl.textContent = "Open: " + (Math.round(displayOpen * data2["quotes"]["USDCHF"])).toFixed(2);
+                            chfHighEl.textContent = "High: " + (Math.round(displayHigh * data2["quotes"]["USDCHF"])).toFixed(2);
+                            chfLowEl.textContent = "Low: " + (Math.round(displayLow * data2["quotes"]["USDCHF"])).toFixed(2);
+                            chfCloseEl.textContent = "Close: " + (Math.round(displayClose * data2["quotes"]["USDCHF"])).toFixed(2);
+                        });
+                    }
+                });
+
+                // get Currency chosen by user (BR)
+                let currencyApi2 = "http://api.currencylayer.com/live?access_key=18d5fcb4ab951492d7da46175fb934c4&currencies=" + currencyChosen + "&format=1%22";
+
+                fetch(currencyApi2).then(function(response3){
+                    if (response3.ok) {
+                        response3.json().then(function(data3) {
+                            console.log(data3);
+
+                            // display currency chosen by user
+                            userChosen.textContent = currencyChosen + ":";
+                            userOpenEl.textContent = "Open: " + (Math.round(displayOpen * data3["quotes"]["USD" + currencyChosen])).toFixed(2);
+                            userHighEl.textContent = "High: " + (Math.round(displayHigh * data3["quotes"]["USD" + currencyChosen])).toFixed(2);
+                            userLowEl.textContent = "Low: " + (Math.round(displayLow * data3["quotes"]["USD" + currencyChosen])).toFixed(2);
+                            userCloseEl.textContent = "Close: " + (Math.round(displayClose * data3["quotes"]["USD" + currencyChosen])).toFixed(2);
+                        });
+                    }
+                });
 
             });
         } else {
@@ -158,16 +182,22 @@ let chfCloseEl = document.querySelector("#chf-close");
     
 };
 
+let getCurrencyApi = function(currencyChosen) {
+    
+};
+
 // Get stock name from input (JM)
 let formSubmitHandler = function(event) {
     event.preventDefault();
     
     let stock = stockInputEl.value.trim();
+    let currencyChosen = currencyList.value;
     let stkdate = stockDateEl.value;
     console.log(stock, stkdate);
-    if (stock) {
-        getStockUrl(stock, stkdate);
+    if (stock && currencyChosen) {
+        getStockUrl(stock, stkdate, currencyChosen);
         stockInputEl.value = "";
+        currencyChosen = "";
     } else {
         alert("Please enter a valid stock code");
     }
