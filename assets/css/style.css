@@ -21,7 +21,7 @@ header {
     padding: 0px auto 10px;
 }
 
-img {
+img header {
     background-image: url("../images/money.jpg");
     background-size: cover;
     width: 50%;
@@ -39,7 +39,7 @@ img {
     
 }
 
-.pure-table thead {
+.pure-table tr {
     display: flex;
     justify-content: space-around;
 }
