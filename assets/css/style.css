@@ -1,6 +1,67 @@
 * {
-   box-sizing: border-box;
+    box-sizing: border-box;
 }
+
+:root {
+    --primary: #3ea060;
+    --secondary: #fff;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--primary);
+}
+
+header {
+    text-align: center;
+    color: #e70000;
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0px auto 10px;
+}
+
+img header {
+    background-image: url("../images/money.jpg");
+    background-size: cover;
+    width: 50%;
+    background-position: 40%;
+    background-attachment: scroll;
+}
+
+.container {
+    background-color: var(--primary);
+    color: #e70000;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 20px;
+    padding: 10px;
+    
+}
+
+.pure-table tr {
+    display: flex;
+    justify-content: space-around;
+}
+
+.pure-table th {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    background: var(--secondary);
+    color: #e70000;
+}
+
+
+
+
+
+
+
+
+
+
+/* CSS code from testing (JM)
 
 :root {
     --primary: #3ea060;
@@ -26,7 +87,7 @@ header {
     display: inline;
 }
 
-/* Search history of stocks */
+/* Search history of stocks 
 .stock-history {
     margin: 20px 0;
     display: block;
@@ -37,14 +98,14 @@ header {
     text-transform: uppercase;
 }
 
-.stock-history p {
-    /*display: block; */
+.stock-history-p {
+    display: inline-block;
     margin:0;
     padding:2px;
     font-weight: bold;
     text-align: left;
     font-size: 1.0rem;
-    width: 100%;
+    width: 175px;
     text-transform: none;
     background-color:var(--history);
 }
@@ -72,6 +133,10 @@ header {
     transform: translate(-1px, -1px);
   }
 
-  .stock-prices {
-      display: inline;
+div.stock-prices {
+      display: inline-block;
+      float: left;
+      width: 350px;
+      margin: 0;
+      padding: 2px;
   }
