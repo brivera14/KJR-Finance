@@ -36,10 +36,13 @@ img {
     font-weight: bold;
     border-bottom: 20px;
     padding: 10px;
+    
 }
 
-.p {
-    display: grid;
+.pure-table th {
     text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    color: #e70000;
 }
  

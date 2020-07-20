@@ -18,8 +18,11 @@ let stockFormEl = document.querySelector("#stock-form");
             displayStock = data["Meta Data"]["2. Symbol"];
             let upperStock = displayStock.toUpperCase();
 
-            let stockNameEl = document.querySelector('.stock-prices');
-            let stknme = document.createElement('p');
+            let stockResponseEl = document.querySelector('.pure-table-bordered');
+            
+
+            let stockNameEl = document.querySelector('.pure-table-bordered');
+            let stknme = document.createElement('th');
             stockNameEl.appendChild(stknme);
             stknme.innerHTML = "Stock: " + upperStock;
            // console.log(stkdate);
@@ -35,32 +38,32 @@ let stockFormEl = document.querySelector("#stock-form");
             displayVolume = data["Time Series (Daily)"][stkdate]["5. volume"];
             
             // Show stock open price
-            let stockOpenEl = document.querySelector('.stock-prices');
-            let stkopen = document.createElement('p');
+            let stockOpenEl = document.querySelector('.pure-table-bordered');
+            let stkopen = document.createElement('th');
             stockOpenEl.appendChild(stkopen);
             stkopen.innerHTML = "Open: " + displayOpen;
 
             // Show stock high
-            let stockHighEl = document.querySelector('.stock-prices');
-            let stkhigh = document.createElement('p');
+            let stockHighEl = document.querySelector('.pure-table-bordered');
+            let stkhigh = document.createElement('th');
             stockHighEl.appendChild(stkhigh);
             stkhigh.innerHTML = "High: " + displayHigh;
 
             // Show stock low
-            let stockLowEl = document.querySelector('.stock-prices');
-            let stklow = document.createElement('p');
+            let stockLowEl = document.querySelector('.pure-table-bordered');
+            let stklow = document.createElement('th');
             stockLowEl.appendChild(stklow);
             stklow.innerHTML = "Low: " + displayLow;
 
             // Show closing stock price
-            let stockCloseEl = document.querySelector('.stock-prices');
-            let stkclose = document.createElement('p');
+            let stockCloseEl = document.querySelector('.pure-table-bordered');
+            let stkclose = document.createElement('th');
             stockCloseEl.appendChild(stkclose);
             stkclose.innerHTML = "Close: " + displayClose;
 
             // Show stock closing price
-            let stockVolumeEl = document.querySelector('.stock-prices');
-            let stkvolume = document.createElement('p');
+            let stockVolumeEl = document.querySelector('.pure-table-bordered');
+            let stkvolume = document.createElement('th');
             stockVolumeEl.appendChild(stkvolume);
             stkvolume.innerHTML = "Volume: " + displayVolume;
 
