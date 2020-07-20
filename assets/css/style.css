@@ -39,10 +39,16 @@ img {
     
 }
 
+.pure-table thead {
+    display: flex;
+    justify-content: space-around;
+}
+
 .pure-table th {
     text-align: center;
     font-size: xx-large;
     font-weight: bold;
+    background: var(--secondary);
     color: #e70000;
 }
  
