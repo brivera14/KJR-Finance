@@ -24,6 +24,7 @@ header {
 img {
     background-image: url("../images/money.jpg");
     background-size: cover;
+    width: 50%;
     background-position: 40%;
     background-attachment: scroll;
 }
@@ -34,5 +35,11 @@ img {
     font-size: 20px;
     font-weight: bold;
     border-bottom: 20px;
+    padding: 10px;
+}
+
+.p {
+    display: grid;
+    text-align: center;
 }
  
