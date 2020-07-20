@@ -14,16 +14,25 @@ body {
 
 header {
     text-align: center;
-    color: var(--secondary);
-    font-size: 45px;
+    color: #e70000;
+    font-size: 30px;
     font-weight: bold;
     font-style: italic;
     padding: 0px auto 10px;
 }
 
+img {
+    background-image: url("../images/money.jpg");
+    background-size: cover;
+    background-position: 40%;
+    background-attachment: scroll;
+}
+
 .container {
     background-color: var(--primary);
-    color: black;
+    color: #e70000;
     font-size: 20px;
     font-weight: bold;
+    border-bottom: 20px;
 }
+ 
