@@ -76,9 +76,7 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             dispYYYY = stkdate.slice(0,4);
             dispStkDte = dispMM + "/" + dispDD + "/" + dispYYYY;
             stknme.innerHTML = "Stock: " + upperStock + "  Price Date: " + dispStkDte;
-            
-           // console.log(stkdate);
-            
+                     
             // Grab stock prices (
             console.log(data["Time Series (Daily)"]["2020-07-17"]["1. open"]);
             console.log(data["Time Series (Daily)"]["2020-07-17"]["4. close"]);
@@ -236,21 +234,23 @@ let formSubmitHistory = function(event) {
     if (stock) {
         stockInputEl.value = "";
         let today = new Date();
-        let day = today.getDay()
         let mm = ("0" + (today.getMonth() + 1)).slice(-2)
         let dd = ("0" + today.getDate()).slice(-2);
         let yyyy = today.getFullYear();
-        console.log(day, mm, dd, yyyy);
+        console.log("before switch: ", mm, dd, yyyy);
+        // New code to check if date valid
+        switch (new Date().getDay()) {
+            case 0:
+              dd = dd - 2;
+              break;
+            case 1:
+              dd = dd - 3;
+              break;
+            default:
+              dd = dd - 1;
+        }
+        console.log("After switch: ", mm, dd, yyyy);
 
-        if (day === 0) {
-            dd = dd -2;
-        }
-        if (day === 6) {
-            dd = dd - 1;
-        }
-        if (day === 1) {
-            dd = dd -3;
-        }
         displayDate = yyyy + "-" + mm + "-" + dd;
         console.log("Date: ", displayDate);
         stkdate = displayDate;
@@ -274,7 +274,7 @@ let getSearchHistory = function(update) {
             while (parent.firstChild) {
                 parent.removeChild(parent.firstChild);
             }
-            let priceparent = document.querySelector('.stock-prices');
+            let priceparent = document.querySelector('.pure-table-bordered');
             while (priceparent.firstChild) {
                 priceparent.removeChild(priceparent.firstChild);
             }

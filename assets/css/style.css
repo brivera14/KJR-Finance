@@ -1,3 +1,4 @@
+/* Pure CSS */
 * {
     box-sizing: border-box;
 }
@@ -30,7 +31,6 @@ img header {
 }
 
 .container {
-<<<<<<< HEAD
     background-color: var(--primary);
     color: #e70000;
     font-size: 20px;
@@ -53,7 +53,6 @@ img header {
     color: #e70000;
 }
  
-=======
     background-color: var(--primary);
     color: #e70000;
     font-size: 20px;
@@ -75,43 +74,13 @@ img header {
     background: var(--secondary);
     color: #e70000;
 }
+/* end of Pure */
 
 
 
+/* CSS code from testing (JM) */
 
-
-
-
-
-
-
-/* CSS code from testing (JM)
-
-:root {
-    --primary: #3ea060;
-    --secondary: #fff;
-    --history: rgb(236, 232, 232);
-    --border: rgb(173, 169, 169);
-
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-header {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    color: var(--secondary);
-    background-color: var(--primary);
-}
-
-#stock-form {
-    display: inline;
-}
-
-/* Search history of stocks 
+/* Search history of stocks */
 .stock-history {
     margin: 20px 0;
     display: block;
@@ -156,12 +125,3 @@ header {
     width: 100%;
     transform: translate(-1px, -1px);
   }
-
-div.stock-prices {
-      display: inline-block;
-      float: left;
-      width: 350px;
-      margin: 0;
-      padding: 2px;
-  }
->>>>>>> 89539dedecccd0817eab011aacc0ae9a6f53b627
