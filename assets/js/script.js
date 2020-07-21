@@ -5,7 +5,7 @@ let apiKey = "&apikey=MYP2P4U87W95DBG6";
 let stockInputEl = document.querySelector("#stacked-stockname");
 let stockDateEl = document.querySelector("#stack-stockdate");
 let stockFormEl = document.querySelector("#stock-form");
-let searchBtnEl = document.querySelector(".stock-history");
+let searchBtnEl = document.querySelector(".pure-history");
 
 let stkHistoryArr = [];
 let update = 0;
@@ -68,17 +68,15 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             let stockNameEl = document.querySelector('.pure-table-bordered');
             let stknme = document.createElement('th');
             stockNameEl.textContent = ""; // Created to remove last stock Prices (BR)
-            //let stknme = document.createElement('p');
-            //stknme.classList.add('stock-prices');
+            let stknme = document.createElement('p');
+            stknme.classList.add('stock-prices');
             stockNameEl.appendChild(stknme);
             dispMM = stkdate.slice(5,7);
             dispDD = stkdate.slice(8,10);
             dispYYYY = stkdate.slice(0,4);
             dispStkDte = dispMM + "/" + dispDD + "/" + dispYYYY;
             stknme.innerHTML = "Stock: " + upperStock + "  Price Date: " + dispStkDte;
-            
-           // console.log(stkdate);
-            
+                     
             // Grab stock prices (
             console.log(data["Time Series (Daily)"]["2020-07-17"]["1. open"]);
             console.log(data["Time Series (Daily)"]["2020-07-17"]["4. close"]);
@@ -209,10 +207,6 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
     
 };
 
-let getCurrencyApi = function(currencyChosen) {
-    
-};
-
 // Get stock name from input (JM)
 let formSubmitHandler = function(event) {
     event.preventDefault();
@@ -336,9 +330,14 @@ let saveSearchHistory = function(stock) {
     }
 };
 
-
-
-
+// create datepicker
+$("#stkdate").datepicker({
+    beforeShowDay: $.datepicker.noWeekends,
+    dateFormat: 'yy-mm-dd',
+    startDate: '2020-02-27',
+    minDate: -145,
+    maxDate: 0
+});
 
 // Call history, stock fetch, stock history (JM)
 getSearchHistory();
