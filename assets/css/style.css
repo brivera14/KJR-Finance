@@ -21,7 +21,20 @@ header {
     padding: 0px auto 10px;
 }
 
-img header {
+header img {
+    background-image: url("../images/stockmk.jpg");
+    background-size: cover;
+    width: 50%;
+    background-position: 40%;
+    background-attachment: scroll;
+    border: 10px solid black;
+}
+
+h2{
+    text-align: center;
+}
+
+img.h2 {
     background-image: url("../images/money.jpg");
     background-size: cover;
     width: 50%;
@@ -39,6 +52,11 @@ img header {
     
 }
 
+.pure-table {
+    margin-top: 8px;
+    width: min-content;
+}
+
 .pure-table tr {
     display: flex;
     justify-content: space-around;
@@ -51,4 +69,13 @@ img header {
     background: var(--secondary);
     color: #e70000;
 }
+
+#money {
+    display: flex;
+    flex-wrap: wrap;
+
+        
+}
+
+
  

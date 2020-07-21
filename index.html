@@ -11,9 +11,9 @@
 
     <body>
         <header class="header">
-            <h1>Let's do this!</h1> 
+            <h1>Stocks & Currencies</h1> 
             <div class="img">
-                <img src="./assets/images/money.jpg" alt="" />
+                <img src="./assets/images/stockmk.jpg" alt="" />
             </div>
         </header>
 
@@ -21,7 +21,6 @@
         <div class="container">
             <form id="stock-form" class="pure-form pure-form-stacked">
                 <fieldset class="input">
-                    <legend>💰💰💰</legend>
                     <label for="stacked-stockname">Stock name:</label>
                     <input name="stock" id="stacked-stockname" placeholder="Enter the Stock Name" type="text" autofocus="true" autocomplete="off" />
                     <span class="pure-form-message">This is a required field.</span>
@@ -206,6 +205,7 @@
         
             <!-- Stock prices -->
             <table class="pure-table">
+                <legend>💰💰Stock Legend💰💰</legend>
                 <thead class="pure-table-bordered"></thead>
             </table>
         
@@ -220,49 +220,56 @@
         </div>
         <!-- Currency Container (BR)-->
         <div id="currency-container" class="container">
-            <h2>Top 6 Currencies: </h2>
-            <div id="usd">
-                <h3><span><img src="https://www.countryflags.io/us/shiny/64.png"></span> American Dollar:</h3>
-                <P id="usd-open"></P>
-                <P id="usd-high"></P>
-                <P id="usd-low"></P>
-                <P id="usd-close"></P>
-            </div>
-            <div id="eur">
-                <h3><span><img src="https://www.countryflags.io/eu/shiny/64.png"></span>Euro:</h3>
-                <P id="eur-open"></P>
-                <P id="eur-high"></P>
-                <P id="eur-low"></P>
-                <P id="eur-close"></P>
-            </div>
-            <div id="jpy">
-                <h3><span><img src="https://www.countryflags.io/jp/shiny/64.png"></span>Japanese Yen:</h3>
-                <P id="jpy-open"></P>
-                <P id="jpy-high"></P>
-                <P id="jpy-low"></P>
-                <P id="jpy-close"></P>
-            </div>
-            <div id="gbp">
-                <h3><span><img src="https://www.countryflags.io/gb/shiny/64.png"></span>Grand British Pound:</h3>
-                <P id="gbp-open"></P>
-                <P id="gbp-high"></P>
-                <P id="gbp-low"></P>
-                <P id="gbp-close"></P>
-            </div>
-            <div id="cad">
-                <h3><span><img src="https://www.countryflags.io/ca/shiny/64.png"></span>Canadian Dollar:</h3>
-                <P id="cad-open"></P>
-                <P id="cad-high"></P>
-                <P id="cad-low"></P>
-                <P id="cad-close"></P>
-            </div>
-            <div id="chf">
-                <h3><span><img src="https://www.countryflags.io/ch/shiny/64.png"></span>Swiss Franc:</h3>
-                <P id="chf-open"></P>
-                <P id="chf-high"></P>
-                <P id="chf-low"></P>
-                <P id="chf-close"></P>
-            </div>
+            <h2>Top 6 Currencies:
+                <div class="img">
+                    <img src="./assets/images/money.jpg" alt="" />
+                </div>
+            </h2>
+
+            <section id="money">
+                <div id="usd">
+                    <h3><span><img src="https://www.countryflags.io/us/shiny/64.png"></span> American Dollar:</h3>
+                    <P id="usd-open"></P>
+                    <P id="usd-high"></P>
+                    <P id="usd-low"></P>
+                    <P id="usd-close"></P>
+                </div>
+                <div id="eur">
+                    <h3><span><img src="https://www.countryflags.io/eu/shiny/64.png"></span>Euro:</h3>
+                    <P id="eur-open"></P>
+                    <P id="eur-high"></P>
+                    <P id="eur-low"></P>
+                    <P id="eur-close"></P>
+                </div>
+                <div id="jpy">
+                    <h3><span><img src="https://www.countryflags.io/jp/shiny/64.png"></span>Japanese Yen:</h3>
+                    <P id="jpy-open"></P>
+                    <P id="jpy-high"></P>
+                    <P id="jpy-low"></P>
+                    <P id="jpy-close"></P>
+                </div>
+                <div id="gbp">
+                    <h3><span><img src="https://www.countryflags.io/gb/shiny/64.png"></span>Grand British Pound:</h3>
+                    <P id="gbp-open"></P>
+                    <P id="gbp-high"></P>
+                    <P id="gbp-low"></P>
+                    <P id="gbp-close"></P>
+                </div>
+                <div id="cad">
+                    <h3><span><img src="https://www.countryflags.io/ca/shiny/64.png"></span>Canadian Dollar:</h3>
+                    <P id="cad-open"></P>
+                    <P id="cad-high"></P>
+                    <P id="cad-low"></P>
+                    <P id="cad-close"></P>
+                </div>
+                <div id="chf">
+                    <h3><span><img src="https://www.countryflags.io/ch/shiny/64.png"></span>Swiss Franc:</h3>
+                    <P id="chf-open"></P>
+                    <P id="chf-high"></P>
+                    <P id="chf-low"></P>
+                    <P id="chf-close"></P>
+                </div>
+            </section>
         </div>
         
 
