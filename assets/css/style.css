@@ -72,9 +72,7 @@ img.h2 {
 
 #money {
     display: flex;
-    flex-wrap: wrap;
-
-        
+    flex-wrap: wrap;       
 }
 
 
