@@ -334,9 +334,14 @@ let saveSearchHistory = function(stock) {
     }
 };
 
-
-
-
+// create datepicker
+$("#stkdate").datepicker({
+    beforeShowDay: $.datepicker.noWeekends,
+    dateFormat: 'yy-mm-dd',
+    startDate: '2020-02-27',
+    minDate: -145,
+    maxDate: 0
+});
 
 // Call history, stock fetch, stock history (JM)
 getSearchHistory();
