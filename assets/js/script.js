@@ -209,10 +209,6 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
     
 };
 
-let getCurrencyApi = function(currencyChosen) {
-    
-};
-
 // Get stock name from input (JM)
 let formSubmitHandler = function(event) {
     event.preventDefault();
