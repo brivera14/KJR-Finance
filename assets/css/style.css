@@ -1,3 +1,4 @@
+/* Pure CSS */
 * {
     box-sizing: border-box;
 }
@@ -37,14 +38,12 @@ h2{
 }
 /*<<<<<<< HEAD*/
 .container {
-
     background-color: var(--primary);
     color: #e70000;
     font-size: 20px;
     font-weight: bold;
     border-bottom: 20px;
-    padding: 10px;
-    
+    padding: 10px; 
 }
 
 .pure-table {
@@ -63,7 +62,7 @@ h2{
     background: var(--secondary);
     color: #e70000;
 }
-/*<<<<<<< HEAD*/
+/* end of Pure */
 
 #money {
     display: flex;
@@ -71,7 +70,7 @@ h2{
 }
 
 
-
+/* CSS code from testing (JM) */
 
 
 
@@ -98,6 +97,9 @@ header {
 }*/
 
  Search history of stocks 
+
+/* Search history of stocks */
+/*
 .stock-history {
     margin: 20px 0;
     display: block;
@@ -107,7 +109,6 @@ header {
     background-color:var(--history);
     text-transform: uppercase;
 }
-
 .stock-history-p {
     display: inline-block;
     margin:0;
@@ -143,14 +144,14 @@ header {
     transform: translate(-1px, -1px);
   }
 
-div.stock-prices {
+/*div.stock-prices {
       display: inline-block;
-      /*float: left;*/
+      /*float: left;*
       width: 350px;
       margin: 0;
       padding: 2px;
   }
-/*
+
 >>>>>>> 89539dedecccd0817eab011aacc0ae9a6f53b627
 >>>>>>> 094abe651e1f7c4d98f4539120dff23099ce709b
 */
