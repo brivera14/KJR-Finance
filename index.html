@@ -12,9 +12,9 @@
     <body>
         <header class="header">
             <h1>Stocks & Currencies</h1> 
-            <div class="img">
+            <!-- Removed image (JM) <div class="img">
                 <img src="./assets/images/stockmk.jpg" alt="" />
-            </div>
+            </div> -->
         </header>
 
         <!-- Container (JM)-->
@@ -23,12 +23,14 @@
                 <fieldset class="input">
                     <label for="stacked-stockname">Stock name:</label>
                     <input name="stock" id="stacked-stockname" placeholder="Enter the Stock Name" type="text" autofocus="true" autocomplete="off" />
-                    <span class="pure-form-message">This is a required field.</span>
+                    <span class="pure-form-message">OR</span>
+                    <div class="stock-history container"></div>
                     <label for="stacked-stockdate">Date:</label>
                     <input type="date" id="stack-stockdate" name="stkdate">
                     <button type="submit" value="Submit" class="pure-button pure-button-primary">Submit</button>
                 </fieldset>
 
+                    
                 <!-- Label and dropdown with all options of currencies (BR) -->
                 <label>Choose your currency: </label>
                 <select id="currencies-list" style="margin-bottom: 30px;">
@@ -205,16 +207,17 @@
         
         
             <!-- Stock prices -->
-            <div class="stock-history container"></div>
-
             <table class="pure-table">
-                <legend>💰💰Stock Legend💰💰</legend>
+                <legend>Stock Legend💰💰</legend>
                 <thead class="pure-table-bordered"></thead>
             </table>
         
             <!-- User Currency preference (BR) -->
+            <div>
+                <h4 class="currency-selected">Currency Selected</h4>
+            </div>
             <div class="user-currency">
-                <h2 id="user-chosen"></h2>
+                <p id="user-chosen"></p>
                 <P id="user-open"></P>
                 <P id="user-high"></P>
                 <P id="user-low"></P>
@@ -224,9 +227,9 @@
         <!-- Currency Container (BR)-->
         <div id="currency-container" class="container">
             <h2>Top 6 Currencies</h2>
-            <div id="img">
+            <!-- <div id="img">
                 <span><img src="./assets/images/money.jpg" alt="" /></span>
-            </div>
+            </div> -->
 
             <table class="pure-table">
                 <thead class="pure-table-bordered">
@@ -286,8 +289,8 @@
         
 
         <!-- Script file (JM) -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><!--(BR)-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script><!--(BR)-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script src="./assets/js/script.js"></script>
     </body>
 </html>

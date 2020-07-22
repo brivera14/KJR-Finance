@@ -1,5 +1,5 @@
 
-// variables for stock fetch (JM)
+//variables for stock fetch (JM)
 let apiStockUrl = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="
 let apiKey = "&apikey=MYP2P4U87W95DBG6";
 let stockInputEl = document.querySelector("#stacked-stockname");
@@ -65,6 +65,9 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             let stockNameEl = document.querySelector('.pure-table-bordered');
             let stknme = document.createElement('th');
             stockNameEl.textContent = ""; // Created to remove last stock Prices (BR)
+            //let stknme1 = document.createElement('p');
+            //stknme.classList.add('stock-prices');
+            //stockNameEl.appendChild(stknme1);
             stockNameEl.appendChild(stknme);
             stknme.innerHTML = "Stock: " + upperStock;
                 
@@ -81,12 +84,12 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             console.log(data["Time Series (Daily)"]["2020-07-17"]["1. open"]);
             console.log(data["Time Series (Daily)"]["2020-07-17"]["4. close"]);
             
-            /* check for undefined (JM)
-            if (typeof data["Time Series (Daily)"][stkdate]["1. open"] === "undefined") {
-                console.log("ERROR - Display Modal")
-            } */
+            // check for undefined (JM)
+            //if (typeof data["Time Series (Daily)"][stkdate]["1. open"] === "undefined") {
+            //    console.log("ERROR - Display Modal")
+            //} 
 
-
+            
             displayOpen = data["Time Series (Daily)"][stkdate]["1. open"];
             displayHigh = data["Time Series (Daily)"][stkdate]["2. high"];
             // displayLow was givin value "UNDEFINED" because of a typo (BR)
@@ -225,7 +228,7 @@ let formSubmitHandler = function(event) {
     }
 };
 
-/* Get stock name from search history */
+// Get stock name from search history 
 let formSubmitHistory = function(event) {
     event.preventDefault();
 
@@ -284,7 +287,7 @@ let getSearchHistory = function(update) {
         let searchInput = document.createElement('p'); 
         searchInput.classList.add('stock-history-p');                                //right here
         loadSearchEl.appendChild(searchInput);
-        searchInput.innerHTML = "Search History: ";
+        searchInput.innerHTML = "Click on search history: ";
         while (i < stkHistoryArr.length) {
             let loadstock = stkHistoryArr[i]
             let loadstockEl = document.querySelector('.stock-history');
