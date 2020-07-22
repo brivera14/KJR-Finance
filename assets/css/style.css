@@ -15,9 +15,9 @@ body {
 header {
     text-align: center;
     color: #e70000;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
-    font-style: italic;
+    font-family: revert;
     padding: 0px auto 10px;
 }
 
@@ -33,14 +33,14 @@ header img {
 h2{
     text-align: center;
 }
-
+/*
 img.h2 {
     background-image: url("../images/money.jpg");
     background-size: cover;
     width: 50%;
     background-position: 40%;
     background-attachment: scroll;
-}
+}*/
 
 .container {
     background-color: var(--primary);
@@ -54,7 +54,6 @@ img.h2 {
 
 .pure-table {
     margin-top: 8px;
-    width: min-content;
 }
 
 .pure-table tr {
@@ -74,6 +73,3 @@ img.h2 {
     display: flex;
     flex-wrap: wrap;       
 }
-
-
- 
