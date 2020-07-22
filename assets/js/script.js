@@ -75,7 +75,7 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             dispDD = stkdate.slice(8,10);
             dispYYYY = stkdate.slice(0,4);
             dispStkDte = dispMM + "/" + dispDD + "/" + dispYYYY;
-            stknme.innerHTML = "Stock: " + upperStock + "  Price Date: " + dispStkDte;
+            stknme1.innerHTML = "Stock: " + upperStock + "  Price Date: " + dispStkDte;
                      
             // Grab stock prices (
             console.log(data["Time Series (Daily)"]["2020-07-17"]["1. open"]);
