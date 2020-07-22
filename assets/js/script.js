@@ -1,5 +1,5 @@
 
-// variables for stock fetch (JM)
+//variables for stock fetch (JM)
 let apiStockUrl = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="
 let apiKey = "&apikey=MYP2P4U87W95DBG6";
 let stockInputEl = document.querySelector("#stacked-stockname");
@@ -68,9 +68,9 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             let stockNameEl = document.querySelector('.pure-table-bordered');
             let stknme = document.createElement('th');
             stockNameEl.textContent = ""; // Created to remove last stock Prices (BR)
-            //let stknme = document.createElement('p');
+            //let stknme1 = document.createElement('p');
             //stknme.classList.add('stock-prices');
-            stockNameEl.appendChild(stknme);
+            //stockNameEl.appendChild(stknme1);
             dispMM = stkdate.slice(5,7);
             dispDD = stkdate.slice(8,10);
             dispYYYY = stkdate.slice(0,4);
@@ -81,12 +81,12 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             console.log(data["Time Series (Daily)"]["2020-07-17"]["1. open"]);
             console.log(data["Time Series (Daily)"]["2020-07-17"]["4. close"]);
             
-            /* check for undefined (JM)
-            if (typeof data["Time Series (Daily)"][stkdate]["1. open"] === "undefined") {
-                console.log("ERROR - Display Modal")
-            } */
+            // check for undefined (JM)
+            //if (typeof data["Time Series (Daily)"][stkdate]["1. open"] === "undefined") {
+            //    console.log("ERROR - Display Modal")
+            //} 
 
-
+            
             displayOpen = data["Time Series (Daily)"][stkdate]["1. open"];
             displayHigh = data["Time Series (Daily)"][stkdate]["2. high"];
             // displayLow was givin value "UNDEFINED" because of a typo (BR)
@@ -225,7 +225,7 @@ let formSubmitHandler = function(event) {
     }
 };
 
-/* Get stock name from search history */
+// Get stock name from search history 
 let formSubmitHistory = function(event) {
     event.preventDefault();
 

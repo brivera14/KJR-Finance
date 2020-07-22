@@ -80,7 +80,7 @@ img header {
 
 /* CSS code from testing (JM) */
 
-/* Search history of stocks */
+/* Search history of stocks 
 .stock-history {
     margin: 20px 0;
     display: block;
@@ -96,7 +96,7 @@ img header {
     margin:0;
     padding:2px;
     font-weight: bold;
-    text-align: left;
+    text-align: left;g
     font-size: 1.0rem;
     width: 175px;
     text-transform: none;
