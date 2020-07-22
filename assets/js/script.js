@@ -54,7 +54,7 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             console.log(data);
             saveSearchHistory(stock);
             update = 1;
-            getSearchHistory(update);
+            getSearchHistory(update);                                                       
             update = 0;
 
             
@@ -62,21 +62,24 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             displayStock.textContent = ""; // Created to remove last stock name (BR)
             let upperStock = displayStock.toUpperCase();
 
-            let stockResponseEl = document.querySelector('.pure-table-bordered');
-            
-
             let stockNameEl = document.querySelector('.pure-table-bordered');
             let stknme = document.createElement('th');
             stockNameEl.textContent = ""; // Created to remove last stock Prices (BR)
             //let stknme1 = document.createElement('p');
             //stknme.classList.add('stock-prices');
             //stockNameEl.appendChild(stknme1);
+            stockNameEl.appendChild(stknme);
+            stknme.innerHTML = "Stock: " + upperStock;
+                
+            let stockPriceEl = document.querySelector('.pure-table-bordered');
+            let stkpr = document.createElement('th');
+            stockPriceEl.appendChild(stkpr);
             dispMM = stkdate.slice(5,7);
             dispDD = stkdate.slice(8,10);
             dispYYYY = stkdate.slice(0,4);
             dispStkDte = dispMM + "/" + dispDD + "/" + dispYYYY;
-            stknme.innerHTML = "Stock: " + upperStock + "  Price Date: " + dispStkDte;
-                     
+            stkpr.innerHTML = "Price Date: " + dispStkDte;
+
             // Grab stock prices (
             console.log(data["Time Series (Daily)"]["2020-07-17"]["1. open"]);
             console.log(data["Time Series (Daily)"]["2020-07-17"]["4. close"]);
@@ -274,17 +277,17 @@ let getSearchHistory = function(update) {
             while (parent.firstChild) {
                 parent.removeChild(parent.firstChild);
             }
-            let priceparent = document.querySelector('.pure-table-bordered');
+            let priceparent = document.querySelector('.stock-history');
             while (priceparent.firstChild) {
                 priceparent.removeChild(priceparent.firstChild);
             }
         }
         let i =0;
         let loadSearchEl = document.querySelector('.stock-history');
-        let searchInput = document.createElement('p');
-        searchInput.classList.add('stock-history-p');
+        let searchInput = document.createElement('p'); 
+        searchInput.classList.add('stock-history-p');                                //right here
         loadSearchEl.appendChild(searchInput);
-        searchInput.innerHTML = "Search History: ";
+        searchInput.innerHTML = "Click on search history: ";
         while (i < stkHistoryArr.length) {
             let loadstock = stkHistoryArr[i]
             let loadstockEl = document.querySelector('.stock-history');
@@ -340,6 +343,6 @@ $("#stkdate").datepicker({
 });
 
 // Call history, stock fetch, stock history (JM)
-getSearchHistory();
+getSearchHistory();                                                      
 stockFormEl.addEventListener("submit", formSubmitHandler); 
 searchBtnEl.addEventListener("click", formSubmitHistory);
