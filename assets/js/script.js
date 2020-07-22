@@ -5,7 +5,7 @@ let apiKey = "&apikey=MYP2P4U87W95DBG6";
 let stockInputEl = document.querySelector("#stacked-stockname");
 let stockDateEl = document.querySelector("#stack-stockdate");
 let stockFormEl = document.querySelector("#stock-form");
-let searchBtnEl = document.querySelector("#stock-history");
+let searchBtnEl = document.querySelector(".stock-history");
 
 let stkHistoryArr = [];
 let update = 0;
@@ -54,7 +54,7 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             console.log(data);
             saveSearchHistory(stock);
             update = 1;
-            getSearchHistory(update);
+            getSearchHistory(update);                                                       
             update = 0;
 
             
@@ -65,8 +65,6 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             let stockNameEl = document.querySelector('.pure-table-bordered');
             let stknme = document.createElement('th');
             stockNameEl.textContent = ""; // Created to remove last stock Prices (BR)
-            /*let stknme = document.createElement('p'); //go with history check */
-            /*stknme.classList.add('stock-prices');*/
             stockNameEl.appendChild(stknme);
             stknme.innerHTML = "Stock: " + upperStock;
                 
@@ -272,26 +270,26 @@ let getSearchHistory = function(update) {
         let retrievedData = localStorage.getItem("StockSearch");
         stkHistoryArr = JSON.parse(retrievedData);
         if (update === 1) {
-            let parent = document.querySelector('#stock-history');
+            let parent = document.querySelector('.stock-history');
             while (parent.firstChild) {
                 parent.removeChild(parent.firstChild);
             }
-            let priceparent = document.querySelector('#stock-history');
+            let priceparent = document.querySelector('.stock-history');
             while (priceparent.firstChild) {
                 priceparent.removeChild(priceparent.firstChild);
             }
         }
         let i =0;
-        let loadSearchEl = document.querySelector('#stock-history');
-        let searchInput = document.createElement('th'); //th needed
-        /*searchInput.classList.add('stock-history-p');*/
+        let loadSearchEl = document.querySelector('.stock-history');
+        let searchInput = document.createElement('p'); 
+        searchInput.classList.add('stock-history-p');                                //right here
         loadSearchEl.appendChild(searchInput);
         searchInput.innerHTML = "Search History: ";
         while (i < stkHistoryArr.length) {
             let loadstock = stkHistoryArr[i]
-            let loadstockEl = document.querySelector('#stock-history');
-            let stockInput = document.createElement('pure-button');
-            stockInput.classList.add('pure-button-primary');
+            let loadstockEl = document.querySelector('.stock-history');
+            let stockInput = document.createElement('button');
+            stockInput.classList.add('btn-hist');
             loadstockEl.appendChild(stockInput);
             stockInput.innerHTML = loadstock;
             i++;
@@ -342,6 +340,6 @@ $("#stkdate").datepicker({
 });
 
 // Call history, stock fetch, stock history (JM)
-getSearchHistory();
+getSearchHistory();                                                      
 stockFormEl.addEventListener("submit", formSubmitHandler); 
 searchBtnEl.addEventListener("click", formSubmitHistory);
