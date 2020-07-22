@@ -5,7 +5,7 @@ let apiKey = "&apikey=MYP2P4U87W95DBG6";
 let stockInputEl = document.querySelector("#stacked-stockname");
 let stockDateEl = document.querySelector("#stack-stockdate");
 let stockFormEl = document.querySelector("#stock-form");
-let searchBtnEl = document.querySelector(".pure-history");
+let searchBtnEl = document.querySelector(".stock-history");
 
 let stkHistoryArr = [];
 let update = 0;
@@ -68,8 +68,8 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             let stockNameEl = document.querySelector('.pure-table-bordered');
             let stknme = document.createElement('th');
             stockNameEl.textContent = ""; // Created to remove last stock Prices (BR)
-            let stknme = document.createElement('p');
-            stknme.classList.add('stock-prices');
+            //let stknme = document.createElement('p');
+            //stknme.classList.add('stock-prices');
             stockNameEl.appendChild(stknme);
             dispMM = stkdate.slice(5,7);
             dispDD = stkdate.slice(8,10);
