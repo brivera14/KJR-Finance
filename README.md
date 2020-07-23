@@ -17,7 +17,7 @@ This project displays Stock prices and Stock Price Currencies
 
 
 # Screen Shot
-![image](https://user-images.githubusercontent.com/64744763/88302785-415d7b80-ccd4-11ea-95e8-44459e5c7c4b.png)
+![image](https://user-images.githubusercontent.com/64744763/88333106-a4173d00-ccfd-11ea-93ae-62a5b8bc5ab2.png)
 
 # Technology Used
 HTML, CSS, JavaScript, JQuery, Moment, Pure, API 
