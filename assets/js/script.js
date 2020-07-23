@@ -260,9 +260,10 @@ $("#stack-stockdate").datepicker({
     minDate: -142,
     maxDate: 0
     
+
 });
 
-// Get stock name from search history 
+// Get stock name from search history (JM)
 let formSubmitHistory = function(event) {
     event.preventDefault();
     errorStockEl.textContent = "";
