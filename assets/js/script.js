@@ -231,12 +231,17 @@ let formSubmitHandler = function(event) {
     }
 };
 
-// create datepicker
+// Display time (BR)
+var now = moment().format("hh:mm");
+// console.log(now);
+
+// create datepicker (BR)
 $("#stack-stockdate").datepicker({
     beforeShowDay: $.datepicker.noWeekends,
     dateFormat: 'yy-mm-dd',
     minDate: -142,
-    maxDate: 0
+    maxDate: -1
+    
 });
 
 // Get stock name from search history 
