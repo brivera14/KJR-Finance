@@ -21,12 +21,13 @@
         <div class="container">
             <form id="stock-form" class="pure-form pure-form-stacked">
                 <fieldset class="input">
-                    <label for="stacked-stockname">Stock name:</label>
+                    <label for="stacked-stockname">Stock name:<span id="error-Stock" class="error" style="display: none"></span></label>
                     <input name="stock" id="stacked-stockname" placeholder="Enter the Stock Name" type="text" autofocus="true" autocomplete="off" />
                     <span class="pure-form-message">OR</span>
                     <div class="stock-history container"></div>
                     <label for="stacked-stockdate">Date:</label>
-                    <input type="date" id="stack-stockdate" name="stkdate">
+                    <!-- <input type="date" id="stack-stockdate" name="stkdate"> -->
+                    <input type="text" id="stack-stockdate" name="stkdate" placeholder="mm/dd/yyyy" autocomplete="off" />
                     <button type="submit" value="Submit" class="pure-button pure-button-primary">Submit</button>
                 </fieldset>
 

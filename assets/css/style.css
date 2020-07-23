@@ -150,3 +150,8 @@ h2 {
 #currency-container h2 {
     text-align: left;
 }
+
+.error {
+    color: black;
+    font-weight: bolder;
+}

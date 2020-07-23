@@ -43,6 +43,7 @@ let userOpenEl = document.querySelector("#user-open");
 let userHighEl = document.querySelector("#user-high");
 let userLowEl = document.querySelector("#user-low");
 let userCloseEl = document.querySelector("#user-close");
+let errorStockEl = document.querySelector("#error-Stock");
 
 // Get stock price api (JM)
 let getStockUrl = function(stock, stkdate, currencyChosen) {
@@ -218,15 +219,25 @@ let formSubmitHandler = function(event) {
     let currencyChosen = currencyList.value;
     let stkdate = stockDateEl.value;
     console.log(stock, stkdate);
-    if (stock && currencyChosen) {
+    if (stock && currencyChosen && stkdate) {
         getStockUrl(stock, stkdate, currencyChosen);
         stockInputEl.value = "";
         stockDateEl.value = "";
         currencyChosen = "";
     } else {
-        alert("Please enter a valid stock code");
+        errorStockEl.textContent = "";
+        errorStockEl.textContent = "PLEASE ENTER A VALID STOCK CODE AND SELECT A DATE";
+        errorStockEl.style.display = "block";
     }
 };
+
+// create datepicker
+$("#stack-stockdate").datepicker({
+    beforeShowDay: $.datepicker.noWeekends,
+    dateFormat: 'yy-mm-dd',
+    minDate: -142,
+    maxDate: 0
+});
 
 // Get stock name from search history 
 let formSubmitHistory = function(event) {
@@ -263,7 +274,7 @@ let formSubmitHistory = function(event) {
         stockDateEl.value = "";
         currencyChosen = "";
     } else {
-        alert("Please enter a Stock");
+        errorStockEl.style.display = "block";
     }
 };
 
@@ -332,15 +343,6 @@ let saveSearchHistory = function(stock) {
         localStorage.setItem("StockSearch", JSON.stringify(stkHistoryArr));
     }
 };
-
-// create datepicker
-$("#stkdate").datepicker({
-    beforeShowDay: $.datepicker.noWeekends,
-    dateFormat: 'yy-mm-dd',
-    startDate: '2020-02-27',
-    minDate: -145,
-    maxDate: 0
-});
 
 // Call history, stock fetch, stock history (JM)
 getSearchHistory();                                                      
