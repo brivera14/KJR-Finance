@@ -258,7 +258,7 @@ $("#stack-stockdate").datepicker({
     beforeShowDay: $.datepicker.noWeekends,
     dateFormat: 'yy-mm-dd',
     minDate: -142,
-    maxDate: -1
+    maxDate: 0
     
 });
 
