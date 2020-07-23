@@ -258,11 +258,12 @@ $("#stack-stockdate").datepicker({
     beforeShowDay: $.datepicker.noWeekends,
     dateFormat: 'yy-mm-dd',
     minDate: -142,
-    maxDate: -1
+    maxDate: 0
     
+
 });
 
-// Get stock name from search history 
+// Get stock name from search history (JM)
 let formSubmitHistory = function(event) {
     event.preventDefault();
     errorStockEl.textContent = "";
