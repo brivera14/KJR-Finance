@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #3ea060;
+    --secondary: #fff;
+    --history: rgb(192, 191, 191);
+    --border: rgb(173, 169, 169);
+    --search: rgb(85, 83, 83);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--primary);
+}
+
+header {
+    margin: 10px auto;
+    text-align: center;
+    color: #e70000;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: revert;
+    background-color: black;
+    padding: 0px auto 5px;
+}
+
+header img {
+    background-image: url("../images/stockmk.jpg");
+    background-size: cover;
+    width: 100%;
+    background-position: 40%;
+    background-attachment: scroll;
+    border: 10px solid black;
+}
+
+h2 {
+    margin: 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+.container {
+    background-color: var(--primary);
+    color: #e70000;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 10px;
+    padding: 5px;
+}
+
+.pure-table {
+    margin-top: 4px;
+}
+
+.pure-table tr {
+    display: flex;
+    justify-content: space-around;
+}
+
+.pure-table th {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    background: var(--secondary);
+    color: #e70000;
+}
+
+#money {
+    display: flex;
+    flex-wrap: wrap;       
+}
+
+.stock-history {
+    margin: 2px 0;
+    padding: 2px;
+    display: inline-block;
+    text-align: left;
+    font-size: 1.0rem;
+    background-color:var(--history);
+    text-transform: uppercase;
+}
+.stock-history-p {
+    display: inline-block;
+    color: var(--search);
+    margin:0;
+    padding:2px;
+    text-align: left;
+    font-size: 1.0rem;
+    width: 200px;
+    text-transform: none;
+    background-color:var(--history);
+}
+
+.btn-hist {
+    margin: 0;
+    display: inline-block;
+    color: var(--search);
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid var(--history);
+    background-color: var(--history);
+    width: 75px;
+    transform: translate(-1px, -1px);
+  }
+
+  .btn-hist:hover {
+    margin: 0;
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    background-color:#0078e7;
+    width: 75px;
+    transform: translate(-1px, -1px);
+  }
+
+.currency-selected {
+    margin: 10px 0;
+}
+
+.user-currency {
+    margin: 2px 0;
+    padding: 2px;
+    color: black;
+    display: inline-block;
+    text-align: left;
+    font-size: 1.0rem;
+    height: 35px;
+    background-color:var(--secondary);
+    text-transform: uppercase;
+ }
+
+#user-chosen {
+    margin: 5px 0;
+    text-align: center;
+    width: 100px;
+    display: inline-block;
+}
+#user-open, #user-high, #user-low, #user-close {
+    margin: 5px 0;
+    text-align: center;
+    display: inline-block;
+    width: 150px;
+}
+
+#currency-container h2 {
+    text-align: left;
+}
+
+.error {
+    color: black;
+    font-weight: bolder;
+}
