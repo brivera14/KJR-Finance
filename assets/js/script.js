@@ -53,22 +53,49 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
         if (response.ok) {
             response.json().then(function(data) {    
             console.log(data);
-            saveSearchHistory(stock);
-            update = 1;
-            getSearchHistory(update);                                                       
-            update = 0;
-
             
-            displayStock = data["Meta Data"]["2. Symbol"];
+            // This is undefined error check on stock api array
+            if (!data.hasOwnProperty("Meta Data")){
+                errorStockEl.textContent = "";
+                errorStockEl.textContent = "PLEASE ENTER A VALID STOCK CODE AND SELECT A DATE";
+                errorStockEl.style.display = "block";
+                return;       
+            } else if (!data["Meta Data"].hasOwnProperty("2. Symbol")){
+                        errorStockEl.textContent = "";
+                        errorStockEl.textContent = "PLEASE ENTER A VALID STOCK CODE AND SELECT A DATE";
+                        errorStockEl.style.display = "block";
+                        return;       
+                    } else {
+                        saveSearchHistory(stock);
+                        update = 1;
+                        getSearchHistory(update);                                                       
+                        update = 0;
+                    }
+            // This is undefined error check on date api array
+            if (!data.hasOwnProperty("Time Series (Daily)")) {
+                errorStockEl.textContent = "";
+                errorStockEl.textContent = "PLEASE ENTER A VALID STOCK CODE AND SELECT A DATE";
+                errorStockEl.style.display = "block";
+                return;       
+            } else if (!data["Time Series (Daily)"].hasOwnProperty(stkdate)) {
+                        errorStockEl.textContent = "";
+                        errorStockEl.textContent = "PLEASE ENTER A VALID STOCK CODE AND SELECT A DATE";
+                        errorStockEl.style.display = "block";
+                        return;       
+                    } else {
+                        saveSearchHistory(stock);
+                        update = 1;
+                        getSearchHistory(update);                                                       
+                        update = 0;
+                    }
+
+            displayStock = data["Meta Data"]["2. Symbol"];            
             displayStock.textContent = ""; // Created to remove last stock name (BR)
             let upperStock = displayStock.toUpperCase();
 
             let stockNameEl = document.querySelector('.pure-table-bordered');
             let stknme = document.createElement('th');
             stockNameEl.textContent = ""; // Created to remove last stock Prices (BR)
-            //let stknme1 = document.createElement('p');
-            //stknme.classList.add('stock-prices');
-            //stockNameEl.appendChild(stknme1);
             stockNameEl.appendChild(stknme);
             stknme.innerHTML = "Stock: " + upperStock;
                 
@@ -81,16 +108,7 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             dispStkDte = dispMM + "/" + dispDD + "/" + dispYYYY;
             stkpr.innerHTML = "Price Date: " + dispStkDte;
 
-            // Grab stock prices (
-            console.log(data["Time Series (Daily)"]["2020-07-17"]["1. open"]);
-            console.log(data["Time Series (Daily)"]["2020-07-17"]["4. close"]);
-            
-            // check for undefined (JM)
-            //if (typeof data["Time Series (Daily)"][stkdate]["1. open"] === "undefined") {
-            //    console.log("ERROR - Display Modal")
-            //} 
-
-            
+                                  
             displayOpen = data["Time Series (Daily)"][stkdate]["1. open"];
             displayHigh = data["Time Series (Daily)"][stkdate]["2. high"];
             // displayLow was givin value "UNDEFINED" because of a typo (BR)
@@ -214,7 +232,7 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
 // Get stock name from input (JM)
 let formSubmitHandler = function(event) {
     event.preventDefault();
-    
+    errorStockEl.textContent = "";
     let stock = stockInputEl.value.trim();
     let currencyChosen = currencyList.value;
     let stkdate = stockDateEl.value;
@@ -247,7 +265,7 @@ $("#stack-stockdate").datepicker({
 // Get stock name from search history 
 let formSubmitHistory = function(event) {
     event.preventDefault();
-
+    errorStockEl.textContent = "";
     let stock = event.target.innerHTML;
     let currencyChosen = currencyList.value;
     if (stock) {
