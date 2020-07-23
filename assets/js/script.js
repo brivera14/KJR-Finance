@@ -133,7 +133,7 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
             stkvolume.innerHTML = "Volume: " + displayVolume;
 
                 // fetch currency api to convert stock prices to different currencies (BR)
-                let currencyApi = "http://api.currencylayer.com/live?access_key=18d5fcb4ab951492d7da46175fb934c4&currencies=USD,EUR,JPY,GBP,CAD,CHF&format=1%22";
+                let currencyApi = "https://api.currencylayer.com/live?access_key=18d5fcb4ab951492d7da46175fb934c4&currencies=USD,EUR,JPY,GBP,CAD,CHF&format=1%22";
                 fetch(currencyApi).then(function(response2){
                     if (response2.ok) {
                         response2.json().then(function(data2) {
@@ -182,7 +182,7 @@ let getStockUrl = function(stock, stkdate, currencyChosen) {
                 });
 
                 // get Currency chosen by user (BR)
-                let currencyApi2 = "http://api.currencylayer.com/live?access_key=18d5fcb4ab951492d7da46175fb934c4&currencies=" + currencyChosen + "&format=1%22";
+                let currencyApi2 = "https://api.currencylayer.com/live?access_key=18d5fcb4ab951492d7da46175fb934c4&currencies=" + currencyChosen + "&format=1%22";
 
                 fetch(currencyApi2).then(function(response3){
                     if (response3.ok) {
